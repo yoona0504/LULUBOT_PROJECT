@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>루루봇 - LuruBot</title>
+    <link rel="stylesheet" href="static/css/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=SF+Pro+Display:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <!-- 헤더 -->
+        <header class="header">
+            <div class="header-content">
+                <div class="logo">
+                    <h1>🤖 루루봇</h1>
+                    <p>감정을 이해하는 AI 친구</p>
+                </div>
+                <div class="status-indicator">
+                    <div class="status-dot" id="statusDot"></div>
+                    <span id="statusText">시작 준비중</span>
+                </div>
+            </div>
+        </header>
+
+        <!-- 메인 컨텐츠 -->
+        <main class="main-content">
+            <!-- 비디오 섹션 -->
+            <section class="video-section">
+                <div class="video-container">
+                    <img id="videoFeed" src="" alt="비디오 피드" class="video-feed">
+                    <div class="video-overlay">
+                        <div class="controls">
+                            <button id="startBtn" class="btn btn-primary">
+                                <span class="btn-icon">📹</span>
+                                카메라 시작
+                            </button>
+                            <button id="stopBtn" class="btn btn-secondary" disabled>
+                                <span class="btn-icon">⏹️</span>
+                                카메라 정지
+                            </button>
+                            <button id="registerBtn" class="btn btn-accent" disabled>
+                                <span class="btn-icon">👤</span>
+                                사용자 등록
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- 대시보드 섹션 -->
+            <section class="dashboard">
+                <!-- 현재 상태 -->
+                <div class="status-card">
+                    <h3>현재 상태</h3>
+                    <div class="status-content">
+                        <div class="emotion-display">
+                            <img id="emotionImage" src="/static/images/emotions/neutral.png" alt="감정" class="emotion-icon">
+                            <div class="emotion-info">
+                                <h4 id="currentEmotion">감정 분석중...</h4>
+                                <p id="currentUser">사용자 인식 대기중</p>
+                                <div class="confidence-bar">
+                                    <div class="confidence-fill" id="confidenceFill"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="lurubot-avatar" id="lurubotAvatar">
+                            <div class="avatar-face">
+                                <div class="avatar-eyes">
+                                    <div class="eye left-eye"></div>
+                                    <div class="eye right-eye"></div>
+                                </div>
+                                <div class="avatar-mouth"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 채팅 섹션 -->
+                <div class="chat-card">
+                    <h3>대화하기</h3>
+                    <div class="chat-container" id="chatContainer">
+                        <div class="chat-messages" id="chatMessages">
+                            <div class="message bot-message">
+                                <div class="message-content">
+                                    <p>안녕하세요! 저는 루루봇입니다. 삐삐~ 😊</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="chat-input-container">
+                            <input type="text" id="chatInput" placeholder="메시지를 입력하세요..." disabled>
+                            <button id="sendBtn" class="btn btn-primary" disabled>
+                                <span class="btn-icon">📤</span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 성격 분석 -->
+                <div class="personality-card">
+                    <h3>성격 분석</h3>
+                    <div class="personality-traits" id="personalityTraits">
+                        <p>사용자 인식 후 성격 분석이 시작됩니다.</p>
+                    </div>
+                </div>
+
+                <!-- 감정 히스토리 -->
+                <div class="history-card">
+                    <h3>감정 기록</h3>
+                    <div class="emotion-history" id="emotionHistory">
+                        <p>감정 분석 기록이 여기에 표시됩니다.</p>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <!-- 사용자 등록 모달 -->
+        <div class="modal" id="registerModal">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h3>새 사용자 등록</h3>
+                    <button class="close-btn" id="closeModal">&times;</button>
+                </div>
+                <div class="modal-body">
+                    <p>카메라 앞에 얼굴을 위치시키고 이름을 입력해주세요.</p>
+                    <input type="text" id="userName" placeholder="이름을 입력하세요" class="modal-input">
+                </div>
+                <div class="modal-footer">
+                    <button class="btn btn-secondary" id="cancelRegister">취소</button>
+                    <button class="btn btn-primary" id="confirmRegister">등록</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- 로딩 오버레이 -->
+        <div class="loading-overlay" id="loadingOverlay">
+            <div class="loading-spinner"></div>
+            <p>처리중...</p>
+        </div>
+    </div>
+
+    <!-- 오디오 요소들 -->
+    <audio id="beepAudio1" preload="auto">
+        <source src="/static/sounds/beep1.mp3" type="audio/mpeg">
+    </audio>
+    <audio id="beepAudio2" preload="auto">
+        <source src="/static/sounds/beep2.mp3" type="audio/mpeg">
+    </audio>
+    <audio id="beepAudio3" preload="auto">
+        <source src="/static/sounds/beep3.mp3" type="audio/mpeg">
+    </audio>
+
+    <script src="static/js/app.js"></script>
+</body>
+</html>
