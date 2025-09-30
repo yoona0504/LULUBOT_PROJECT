@@ -1,5 +1,5 @@
 // 📁 static/js/core/camera.js
-const API = "http://127.0.0.1:5001"; // Flask 서버 포트 맞추기
+const API = "" // Flask 서버 포트 맞추기
 
 export default class CameraController {
   constructor({ video, startBtn, stopBtn, registerBtn, ui }) {
