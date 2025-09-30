@@ -1,0 +1,6 @@
+cd C:LULUBOT_PROJECT\lulubot_project
+// 가상환경 없을 시 python -m venv .venv
+.\.venv\Scripts\activate
+
+// *lulubot_project* 에서 pip install -r requirements.txt // 설치 안 했을 때만
+python app.py
