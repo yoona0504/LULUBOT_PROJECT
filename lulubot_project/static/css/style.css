@@ -131,6 +131,7 @@ body {
 }
 
 .video-feed {
+    /* transform: scaleX(-1); 좌우반전 */
     width: 100%;
     height: auto;
     min-height: 400px;
